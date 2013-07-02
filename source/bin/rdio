@@ -35,9 +35,9 @@ class Rdio
   def actions
     @actions ||= begin
       actions = Hash.new(lambda { raise NoActionFound })
-      actions[:add] = lambda { `./bin/add_current_track_to_collection` }
+      actions[:add] = lambda { `#{bin_directory}/add_current_track_to_collection` }
       actions[:remove] = lambda do
-        output = `./bin/remove_current_track_from_collection`
+        output = `#{bin_directory}/remove_current_track_from_collection`
         run_action('next')
         output
       end
@@ -45,9 +45,13 @@ class Rdio
       actions[:pause] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to pause}) }
       actions[:next] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to next track}) }
       actions[:previous] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to previous track}) }
-      actions[:now] = lambda { `./bin/now_playing` }
+      actions[:now] = lambda { `#{bin_directory}/now_playing` }
       actions
     end
+  end
+
+  def bin_directory
+    File.dirname(__FILE__)
   end
 
   class NoActionFound < RuntimeError; end
