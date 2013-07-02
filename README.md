@@ -1,4 +1,4 @@
-# Rdio Alfred Workflow
+# Alfred Rdio Workflow
 
 Control Rdio.app from Alfred including:
 
