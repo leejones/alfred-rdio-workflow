@@ -1,0 +1,6 @@
+#!/usr/bin/osascript
+
+tell application "Rdio"
+  add to collection
+  "Added \"" & name of current track & "\" to your collection."
+end tell

@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+class AppleScript
+  def self.call(command)
+   `osascript -e "#{command}"`
+  end
+end
+
+class Rdio
+  def call(*actions)
+    if actions.count == 0
+      AppleScript.call(%q{tell application \\"Rdio\\" to activate})
+    else
+      begin
+        run_action(actions.first)
+      rescue NoActionFound
+        puts "ERROR: #{actions.first} is not a supported action"
+      end
+    end
+  end
+
+  private
+
+  def run_action(action)
+    output = action_for(action).call.strip
+    unless output == ''
+      puts output
+    end
+  end
+
+  def action_for(action)
+    actions[action.intern]
+  end
+
+  def actions
+    @actions ||= begin
+      actions = Hash.new(lambda { raise NoActionFound })
+      actions[:add] = lambda { `./bin/add_current_track_to_collection` }
+      actions[:remove] = lambda do
+        output = `./bin/remove_current_track_from_collection`
+        run_action('next')
+        output
+      end
+      actions[:play] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to play}) }
+      actions[:pause] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to pause}) }
+      actions[:next] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to next track}) }
+      actions[:previous] = lambda { AppleScript.call(%q{tell application \\"Rdio\\" to previous track}) }
+      actions
+    end
+  end
+
+  class NoActionFound < RuntimeError; end
+end
+
+if $0 == __FILE__
+  Rdio.new.call(*ARGV)
+end

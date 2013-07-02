@@ -1,0 +1,6 @@
+#!/usr/bin/osascript
+
+tell application "Rdio"
+  remove from collection
+  "Removed \"" & name of current track & "\" from your collection."
+end tell
