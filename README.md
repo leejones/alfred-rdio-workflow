@@ -26,6 +26,7 @@ If no command is given, the workflow will launch Rdio.app (or bring it to the fo
 * `pause` - pause the current track
 * `next` - advance to the next track
 * `previous` - return to the previous track
+* `now` - show the current track and artist in Notification Center
 
 ## Requirements
 

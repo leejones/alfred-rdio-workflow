@@ -1,0 +1,5 @@
+#!/usr/bin/osascript
+
+tell application "Rdio"
+  "\"" & name of current track & "\" by \"" & artist of current track & "\" is now playing."
+end tell
