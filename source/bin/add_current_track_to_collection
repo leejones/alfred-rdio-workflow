@@ -2,5 +2,5 @@
 
 tell application "Rdio"
   add to collection
-  "Added \"" & name of current track & "\" to your collection."
+  "Added \"" & name of current track & "\" by \"" & artist of current track & "\" to your collection."
 end tell
