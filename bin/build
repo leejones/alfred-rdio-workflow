@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# build a new plugin package for release
-
-cd ./source
-zip ../Rdio.alfredworkflow ./*
-cd ..
