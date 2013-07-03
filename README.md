@@ -6,7 +6,7 @@ Control Rdio.app from Alfred including:
 * play/pause
 * next/previous
 
-Includes output to Notification Center.
+Includes output to Notification Center:
 
 ![Rdio Alfred Workflow in Notification Center](docs/notification.png)
 
@@ -31,7 +31,7 @@ If no command is given, the workflow will launch Rdio.app (or bring it to the fo
 ## Requirements
 
 * [Alfred v2](http://www.alfredapp.com)
-* [Rdio.app](http://www.rdio.com/apps/)
+* [Rdio.app](http://www.rdio.com/apps/) (OS X client for Rdio)
 
 ## Installation
 
