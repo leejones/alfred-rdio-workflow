@@ -35,5 +35,5 @@ If no command is given, the workflow will launch Rdio.app (or bring it to the fo
 
 ## Installation
 
-* Download the [latest release](/leejones/alfred-rdio-workflow/releases)
+* Download the [latest release](https://github.com/leejones/alfred-rdio-workflow/releases)
 * Open the downloaded file and Alfred will import it automatically
